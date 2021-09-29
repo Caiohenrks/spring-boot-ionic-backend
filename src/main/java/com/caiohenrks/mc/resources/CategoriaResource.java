@@ -1,4 +1,3 @@
-
 package com.caiohenrks.mc.resources;
 
 import com.caiohenrks.mc.domain.Categoria;
@@ -13,18 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/categorias")
+@RequestMapping(value = "/categorias")
 public class CategoriaResource {
-    
+
     @Autowired
     private CategoriaService service;
-    
-    @RequestMapping(value="/{id}", method=RequestMethod.GET)
-    public ResponseEntity<?> find(@PathVariable Integer id){
-        
-        Categoria obj = service.buscar(id);
-        return ResponseEntity.ok(obj);
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> find(@PathVariable Integer id) {
+        Categoria obj = service.buscar(id);
+        return ResponseEntity.ok().body(obj);
     }
-    
+
 }
