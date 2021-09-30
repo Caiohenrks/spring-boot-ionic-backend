@@ -1,8 +1,11 @@
 package com.caiohenrks.mc.resources;
 
 import com.caiohenrks.mc.domain.Categoria;
+import com.caiohenrks.mc.dto.CategoriaDTO;
 import com.caiohenrks.mc.services.CategoriaService;
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +48,13 @@ public class CategoriaResource {
         Categoria obj = service.find(id);
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<CategoriaDTO>> findAll() {
+        List<Categoria> list = service.findAll();
+        List<CategoriaDTO> listDto = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());      
+        return ResponseEntity.ok().body(listDto);
     }
 
 }
