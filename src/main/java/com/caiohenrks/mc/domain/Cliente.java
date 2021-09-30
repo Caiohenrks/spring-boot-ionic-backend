@@ -1,6 +1,7 @@
 package com.caiohenrks.mc.domain;
 
 import com.caiohenrks.mc.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -26,7 +27,8 @@ public class Cliente implements Serializable {
     private String email;
     private String cpfOuCnpj;
     private Integer tipo;
-
+    
+    @JsonManagedReference
     @OneToMany(mappedBy="cliente")
     private List<Endereco> endercos = new ArrayList<>();
 
