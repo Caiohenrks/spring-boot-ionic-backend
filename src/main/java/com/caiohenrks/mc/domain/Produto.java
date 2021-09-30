@@ -1,6 +1,7 @@
 package com.caiohenrks.mc.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,6 +35,7 @@ public class Produto implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private List<Categoria> categorias = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy="id.produto")
     private Set<ItemPedido> itens = new HashSet<>();
 
@@ -45,7 +47,8 @@ public class Produto implements Serializable {
         this.nome = nome;
         this.preco = preco;
     }
-
+    
+    @JsonIgnore
     public List<Pedido> getPedidos() {
         List<Pedido> lista = new ArrayList<>();
         for (ItemPedido x : itens) {
