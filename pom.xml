@@ -11,7 +11,7 @@
     <groupId>com.caiohenrks</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cursomc</name>
+    <name>spring-boot-ionic-backend</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
